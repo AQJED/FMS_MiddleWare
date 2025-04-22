@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cougar FMS Middleware</title>
+  <title>Cougar Full Mission Simulator – Middleware System Development</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-p1TfIh6V+7Wn/dF1WqKz7AGGgKf6EM3mYb+2L1G9OOV3mWc8H5KQFvcN4l+6LJ1qv1pU5jv7uPNq9vT+XQvSBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1TfIh6V+7Wn/dF1WqKz7AGGgKf6EM3mYb+2L1G9OOV3mWc8H5KQFvcN4l+6LJ1qv1pU5jv7uPNq9vT+XQvSBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     /* Base styles */
@@ -24,6 +21,25 @@
     .header-content { position: relative; z-index: 1; padding: 2rem; width: 80%; max-width: 1000px; text-align: center; }
     .header-content h1 { font-size: 3rem; font-weight: 600; color: #ffffff; }
     .header-content p { font-size: 1.25rem; color: #cccccc; margin-top: 0.5rem; }
+
+    /* Main content container */
+    main { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
+    h2 { font-size: 2rem; margin-bottom: 1rem; font-weight: 600; color: #f0f0f0; }
+    p { margin-bottom: 1rem; font-size: 1rem; color: #d0d0d0; }
+    ul { margin-bottom: 1.5rem; padding-left: 1.25rem; }
+    ul li { margin-bottom: 0.5rem; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
+    th, td { padding: 0.75rem 1rem; border: 1px solid #2c2c2c; }
+    th { background-color: #1a1a1a; color: #ffffff; text-align: left; }
+    td { background-color: #141414; color: #cccccc; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content h1 { font-size: 2.5rem; }
+      .header-content { width: 90%; padding: 1.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -31,62 +47,65 @@
   <!-- Header Section -->
   <header>
     <div class="header-content">
-      <h1>Cougar Full Mission Simulator  Middleware System Development</h1>
-      <p>Rheinmetall Arabia | Defense &amp; Simulation | Ongoing</p>
+      <h1>Cougar Full Mission Simulator – Middleware System Development</h1>
+      <p>Rheinmetall Arabia | Defense & Simulation | Ongoing</p>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main style="padding:4rem 2rem; max-width:1000px; margin:0 auto;">
-
+  <main>
+    <!-- Overview Section -->
     <section id="overview">
-      <h2>Project Summary</h2>
-      <p>Led the design, development, integration, and testing of the Middleware System for a Cougar Full Mission Simulator (FMS). The middleware acts as a core interface layer between the Host computer, Image Generator (IG), Computer-Generated Forces (CGF), Brief-Debrief System (BDS), and Instructor Operator Station (IOS). Key responsibilities included:</p>
+      <h2> Overview</h2>
+      <p>As the sole software integration engineer on this mission-critical project, I led the design, development, integration, and validation of a custom middleware system for the Cougar Full Mission Simulator (FMS)—a high-fidelity military flight simulator used for tactical training. This middleware acts as the central nervous system, bridging real-time communication between key subsystems: the Host Computer, Image Generator (IG), Computer-Generated Forces (CGF), Instructor Operator Station (IOS), and the Brief-Debrief System (BDS).</p>
+      <p>The goal was to ensure synchronized, real-time data flow across all systems, allowing for realistic, immersive training with dynamically updating battlefield environments, entity behaviors, and simulation state control.</p>
+    </section>
+
+    <!-- Role & Contributions -->
+    <section id="role">
+      <h2> My Role & Contributions</h2>
       <ul>
-        <li>Implementing real-time CIGI (3.x) and DIS protocol conversion to drive the visual system with high-fidelity simulation data.</li>
-        <li>Ensuring sub-millisecond transport latency for IG communication via Start-of-Frame (SoF) and CIGI packets.</li>
-        <li>Developing interfaces for entity, articulation, and weapon DIS messages from CGF and converting them into CIGI to support dynamic battlefield rendering.</li>
-        <li>Coordinating middleware interactions with IOS, CGF, NPM Project Control, and BDS to support scenario control, playback, and synchronized simulation data display.</li>
-        <li>Delivering a robust architecture capable of supporting ownship and entity data across multiple subsystems including BDS and IG.</li>
+        <li>Engineered a custom middleware layer to enable real-time translation and transport of simulation data between systems using CIGI (Common Image Generator Interface) 3.x and DIS (Distributed Interactive Simulation) protocols.</li>
+        <li>Designed and implemented latency-sensitive mechanisms to maintain sub-millisecond timing accuracy between Start-of-Frame (SoF) signals and IG rendering.</li>
+        <li>Handled entity lifecycle management, ensuring that all simulated actors—aircraft, ground units, and effects—were correctly spawned, updated, or removed in the IG.</li>
+        <li>Developed modules for articulation, weapon state conversion, and multi-system synchronization to reflect battlefield dynamics faithfully.</li>
+        <li>Coordinated communication pipelines for scenario control, event logging, simulation playback, and post-mission debriefing via the BDS and IOS.</li>
       </ul>
     </section>
 
-    <section id="technologies-used">
-      <h2>Technologies Used</h2>
+    <!-- Technical Challenges & Solutions -->
+    <section id="challenges">
+      <h2> Technical Challenges & Solutions</h2>
+      <ul>
+        <li><strong>Protocol Complexity:</strong> DIS and CIGI are fundamentally different in how they model time, entities, and spatial data. I mapped over 20+ fields per packet, ensuring semantic integrity during real-time conversion.</li>
+        <li><strong>Real-Time Performance:</strong> The IG required data within strict timing windows. I built custom threading logic and optimized shared memory pipelines to ensure deterministic packet handling—even under high entity load or network jitter.</li>
+        <li><strong>System Compatibility:</strong> Each subsystem (Host, CGF, BDS, etc.) had different data formats and interface expectations. I developed modular handlers and converters to support interoperability without disrupting existing tools or vendor software.</li>
+        <li><strong>Debugging in Black Box Environments:</strong> With some systems acting like black boxes (e.g., IG with no source access), I created custom packet sniffing and visualization tools to inspect, verify, and reverse-engineer communication patterns.</li>
+      </ul>
+    </section>
+
+    <!-- Technologies Used -->
+    <section id="technologies">
+      <h2> Technologies Used</h2>
       <ul>
         <li>C++</li>
-        <li>Boost (Interprocess, Asio)</li>
+        <li>Boost</li>
         <li>Open DIS</li>
         <li>CIGI Class Library (CCL)</li>
-        <li>PCAP/NPcap</li>
-        <li>Visual Studio</li>
-        <li>Shared memory</li>
-        <li>UDP sockets</li>
-        <li>Real-time systems</li>
-        <li>XML configuration</li>
+        <li>UDP</li>
+        <li>PCAP</li>
+        <li>Custom XML Config Mapping</li>
+        <li>Threading and Shared Memory (Boost Interprocess)</li>
       </ul>
     </section>
 
-    <section id="key-achievements">
-      <h2>Key Achievements</h2>
-      <ul>
-        <li>Reduced IG communication latency to under 1 ms through efficient packet handling and memory management.</li>
-        <li>Designed and implemented a reliable shared memory model for real-time packet exchange between subsystems.</li>
-        <li>Overcame complex protocol conversion challenges by creating a flexible mapping system between DIS and CIGI.</li>
-        <li>Ensured visual consistency in IG by synchronizing lifecycle management for all DIS entities and IG updates.</li>
-        <li>Played a key role in end-to-end system validation and scenario-based testing for mission readiness.</li>
-      </ul>
+    <!-- Outcome & Impact -->
+    <section id="outcome">
+      <h2> Outcome & Impact</h2>
+      <p>Delivered a scalable and modular middleware architecture, ready for future extension (e.g., ownship control, weather effects, AI-driven forces).</p>
+      <p>Significantly reduced latency issues between subsystems, improving visual synchronization and mission realism.</p>
+      <p>Positioned the Cougar FMS for future integration with higher-level command and control systems or multi-simulator networks.</p>
     </section>
-
-    <section id="author">
-      <h2>Author</h2>
-      <p>Adeeb Alqahtani</p>
-      <p>
-        <a href="https://theadeeb.com" style="color:#cccccc; text-decoration:none;">theadeeb.com</a> |
-        <a href="https://www.linkedin.com/in/adalqahtani" style="color:#cccccc; text-decoration:none;">LinkedIn</a>
-      </p>
-    </section>
-
   </main>
 
 </body>
