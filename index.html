@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cougar FMS Middleware</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-p1TfIh6V+7Wn/dF1WqKz7AGGgKf6EM3mYb+2L1G9OOV3mWc8H5KQFvcN4l+6LJ1qv1pU5jv7uPNq9vT+XQvSBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* Base styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { height: 100%; font-family: 'Poppins', sans-serif; color: #e0e0e0; background-color: #0f0f0f; line-height: 1.6; }
+
+    /* Fullscreen Header */
+    header { position: relative; width: 100%; height: 100vh; background: url('background.jpg') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; }
+    header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,15,15,0.6); }
+    .header-content { position: relative; z-index: 1; padding: 2rem; width: 80%; max-width: 1000px; text-align: center; }
+    .header-content h1 { font-size: 3rem; font-weight: 600; color: #ffffff; }
+    .header-content p { font-size: 1.25rem; color: #cccccc; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="header-content">
+      <h1>Cougar Full Mission Simulator  Middleware System Development</h1>
+      <p>Rheinmetall Arabia | Defense &amp; Simulation | Ongoing</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style="padding:4rem 2rem; max-width:1000px; margin:0 auto;">
+
+    <section id="overview">
+      <h2>Project Summary</h2>
+      <p>Led the design, development, integration, and testing of the Middleware System for a Cougar Full Mission Simulator (FMS). The middleware acts as a core interface layer between the Host computer, Image Generator (IG), Computer-Generated Forces (CGF), Brief-Debrief System (BDS), and Instructor Operator Station (IOS). Key responsibilities included:</p>
+      <ul>
+        <li>Implementing real-time CIGI (3.x) and DIS protocol conversion to drive the visual system with high-fidelity simulation data.</li>
+        <li>Ensuring sub-millisecond transport latency for IG communication via Start-of-Frame (SoF) and CIGI packets.</li>
+        <li>Developing interfaces for entity, articulation, and weapon DIS messages from CGF and converting them into CIGI to support dynamic battlefield rendering.</li>
+        <li>Coordinating middleware interactions with IOS, CGF, NPM Project Control, and BDS to support scenario control, playback, and synchronized simulation data display.</li>
+        <li>Delivering a robust architecture capable of supporting ownship and entity data across multiple subsystems including BDS and IG.</li>
+      </ul>
+    </section>
+
+    <section id="technologies-used">
+      <h2>Technologies Used</h2>
+      <ul>
+        <li>C++</li>
+        <li>Boost (Interprocess, Asio)</li>
+        <li>Open DIS</li>
+        <li>CIGI Class Library (CCL)</li>
+        <li>PCAP/NPcap</li>
+        <li>Visual Studio</li>
+        <li>Shared memory</li>
+        <li>UDP sockets</li>
+        <li>Real-time systems</li>
+        <li>XML configuration</li>
+      </ul>
+    </section>
+
+    <section id="key-achievements">
+      <h2>Key Achievements</h2>
+      <ul>
+        <li>Reduced IG communication latency to under 1 ms through efficient packet handling and memory management.</li>
+        <li>Designed and implemented a reliable shared memory model for real-time packet exchange between subsystems.</li>
+        <li>Overcame complex protocol conversion challenges by creating a flexible mapping system between DIS and CIGI.</li>
+        <li>Ensured visual consistency in IG by synchronizing lifecycle management for all DIS entities and IG updates.</li>
+        <li>Played a key role in end-to-end system validation and scenario-based testing for mission readiness.</li>
+      </ul>
+    </section>
+
+    <section id="author">
+      <h2>Author</h2>
+      <p>Adeeb Alqahtani</p>
+      <p>
+        <a href="https://theadeeb.com" style="color:#cccccc; text-decoration:none;">theadeeb.com</a> |
+        <a href="https://www.linkedin.com/in/adalqahtani" style="color:#cccccc; text-decoration:none;">LinkedIn</a>
+      </p>
+    </section>
+
+  </main>
+
+</body>
+</html>
