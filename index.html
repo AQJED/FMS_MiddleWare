@@ -16,24 +16,94 @@
     body, html { height: 100%; font-family: 'Poppins', sans-serif; color: #e0e0e0; background-color: #0f0f0f; line-height: 1.6; }
 
     /* Fullscreen Header */
-    header { position: relative; width: 100%; height: 100vh; background: url('background.jpg') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; }
-    header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,15,15,0.6); }
-    .header-content { position: relative; z-index: 1; padding: 2rem; width: 80%; max-width: 1000px; text-align: center; }
-    .header-content h1 { font-size: 3rem; font-weight: 600; color: #ffffff; }
-    .header-content p { font-size: 1.25rem; color: #cccccc; margin-top: 0.5rem; }
+    header {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('background.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(15,15,15,0.6);
+    }
+    .header-content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      width: 80%;
+      max-width: 1000px;
+      text-align: center;
+    }
+    .header-content h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+    .header-content p {
+      font-size: 1.25rem;
+      color: #cccccc;
+    }
 
     /* Main content container */
-    main { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-    h2 { font-size: 2rem; margin-bottom: 1rem; font-weight: 600; color: #f0f0f0; }
-    p { margin-bottom: 1rem; font-size: 1rem; color: #d0d0d0; }
-    ul { margin-bottom: 1.5rem; padding-left: 1.25rem; }
-    ul li { margin-bottom: 0.5rem; }
+    main {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: #f0f0f0;
+    }
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: #d0d0d0;
+    }
+    ul {
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+    ul li {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      color: #d0d0d0;
+    }
+
+    /* Section spacing */
+    section {
+      margin: 4rem 0;
+      padding-top: 2rem;
+      border-top: 1px solid #2c2c2c;
+    }
 
     /* Tables */
-    table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
-    th, td { padding: 0.75rem 1rem; border: 1px solid #2c2c2c; }
-    th { background-color: #1a1a1a; color: #ffffff; text-align: left; }
-    td { background-color: #141414; color: #cccccc; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      border: 1px solid #2c2c2c;
+    }
+    th {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      text-align: left;
+    }
+    td {
+      background-color: #141414;
+      color: #cccccc;
+    }
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -56,14 +126,17 @@
   <main>
     <!-- Overview Section -->
     <section id="overview">
-      <h2> Overview</h2>
-      <p>As the sole software integration engineer on this mission-critical project, I led the design, development, integration, and validation of a custom middleware system for the Cougar Full Mission Simulator (FMS)—a high-fidelity military flight simulator used for tactical training. This middleware acts as the central nervous system, bridging real-time communication between key subsystems: the Host Computer, Image Generator (IG), Computer-Generated Forces (CGF), Instructor Operator Station (IOS), and the Brief-Debrief System (BDS).</p>
+      <h2>Overview</h2>
+      <p>As the sole software integration engineer on this mission-critical project, I led the design, development, integration, and validation of a custom middleware system for the Cougar Full Mission Simulator (FMS)—a high-fidelity military flight simulator used for tactical training.</p>
+      <p>This middleware acts as the central nervous system, bridging real-time communication between key subsystems: the Host Computer, Image Generator (IG), Computer-Generated Forces (CGF), Instructor Operator Station (IOS), and the Brief-Debrief System (BDS).</p>
+      <img src="BD.png" alt="Block Diagram" style="display: block; max-width: 100%; margin: 1.5rem auto; border: 1px solid #333; border-radius: 8px;">
       <p>The goal was to ensure synchronized, real-time data flow across all systems, allowing for realistic, immersive training with dynamically updating battlefield environments, entity behaviors, and simulation state control.</p>
     </section>
 
     <!-- Role & Contributions -->
     <section id="role">
-      <h2> My Role & Contributions</h2>
+      <h2>My Role & Contributions</h2>
+      
       <ul>
         <li>Engineered a custom middleware layer to enable real-time translation and transport of simulation data between systems using CIGI (Common Image Generator Interface) 3.x and DIS (Distributed Interactive Simulation) protocols.</li>
         <li>Designed and implemented latency-sensitive mechanisms to maintain sub-millisecond timing accuracy between Start-of-Frame (SoF) signals and IG rendering.</li>
@@ -75,7 +148,7 @@
 
     <!-- Technical Challenges & Solutions -->
     <section id="challenges">
-      <h2> Technical Challenges & Solutions</h2>
+      <h2>Technical Challenges & Solutions</h2>
       <ul>
         <li><strong>Protocol Complexity:</strong> DIS and CIGI are fundamentally different in how they model time, entities, and spatial data. I mapped over 20+ fields per packet, ensuring semantic integrity during real-time conversion.</li>
         <li><strong>Real-Time Performance:</strong> The IG required data within strict timing windows. I built custom threading logic and optimized shared memory pipelines to ensure deterministic packet handling—even under high entity load or network jitter.</li>
@@ -86,7 +159,7 @@
 
     <!-- Technologies Used -->
     <section id="technologies">
-      <h2> Technologies Used</h2>
+      <h2>Technologies Used</h2>
       <ul>
         <li>C++</li>
         <li>Boost</li>
@@ -101,7 +174,7 @@
 
     <!-- Outcome & Impact -->
     <section id="outcome">
-      <h2> Outcome & Impact</h2>
+      <h2>Outcome & Impact</h2>
       <p>Delivered a scalable and modular middleware architecture, ready for future extension (e.g., ownship control, weather effects, AI-driven forces).</p>
       <p>Significantly reduced latency issues between subsystems, improving visual synchronization and mission realism.</p>
       <p>Positioned the Cougar FMS for future integration with higher-level command and control systems or multi-simulator networks.</p>
